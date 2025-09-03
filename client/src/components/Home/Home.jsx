@@ -1,9 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import backgroundImage from "../../Images/Home_img.jpg";
+// import { Link } from "react-router-dom";
+// import backgroundImage from "../../Images/Home_img.jpg";
+import Navbar from "../Navbar/Navbar";
 
 const Home = () => {
   return (
+    <>
+    <Navbar />
+    
     <div>
       <style>
         {`
@@ -25,7 +28,7 @@ const Home = () => {
         `}
       </style>
 
-      <div className="relative h-screen">
+      {/* <div className="relative h-screen">
         <div className="absolute top-8 left-5 font-bold text-2xl text-black">
           Telaiya Tourism
         </div>
@@ -47,9 +50,10 @@ const Home = () => {
             Book a Trip
           </button>
         </Link>
-      </div>
-      <h1 className="telaiya-heading">Telaiya Tourism</h1>
+      </div> */}
+      {/* <h1 className="telaiya-heading">Telaiya Tourism</h1> */}
     </div>
+    </>
   );
 };
 
