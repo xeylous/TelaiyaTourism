@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-// import backgroundImage from "../../Images/Home_img.jpg";
+import backgroundImage from "../../Images/Home_img.jpg";
 import Navbar from "../Navbar/Navbar";
 
 const Home = () => {
