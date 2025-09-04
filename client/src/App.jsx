@@ -11,13 +11,16 @@ import PetroWaterfall from "./components/PetroWaterfall/PetroWaterfall.jsx";
 import KodermaWildlifeSanctuary from "./components/KodermaWildlifeSanctuary/KodermaWildlifeSanctuary.jsx";
 import MaaChanchalaDeviMandir from "./components/MaaChanchalaDeviMandir/MaaChanchalaDeviMandir.jsx";
 
+
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/discover" element={<Discover />} />
-        <Route path="/about" element={<AboutUs />} />
+    <>
+   
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/book" element={<Bookatrip />} />
         <Route path="/discover/TelaiyaDam" element={<TelaiyaDam />} />
@@ -30,6 +33,7 @@ const App = () => {
         {/* <Route path="/discover/PanchkheroDam" element={<PanchkheroDam />} /> */}
       </Routes>
     </Router>
+    </>
   );
 };
 

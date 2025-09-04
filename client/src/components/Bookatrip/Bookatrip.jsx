@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import backgroundImage from '../../Images/Home_img.jpg'; // Import the background image
+import Footer from '../Footer/Footer';
 
 
 const Bookatrip = () => {
@@ -71,6 +72,7 @@ const Bookatrip = () => {
   };
 
   return (
+    <>
     <div className="container mx-auto p-8" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <Navbar />
       <form onSubmit={handleSubmit} className="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg max-w-lg mx-auto mt-20">
@@ -123,6 +125,8 @@ const Bookatrip = () => {
         <button type="submit" className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-600">Submit</button>
       </form>
     </div>
+    <Footer />
+    </>
   );
 }
 

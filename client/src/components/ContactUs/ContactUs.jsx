@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import backgroundImage from '../../Images/ContactUs_bg.jpg'; // Import the background image
+import Footer from '../Footer/Footer';
 
 const ContactUs = () => {
   const [name, setName] = useState('');
@@ -18,6 +19,7 @@ const ContactUs = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen flex flex-col" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <Navbar />
       <div className="flex-grow flex items-center justify-center">
@@ -75,6 +77,8 @@ const ContactUs = () => {
         `}
       </style>
     </div>
+    <Footer />
+    </>
   );
 }
 

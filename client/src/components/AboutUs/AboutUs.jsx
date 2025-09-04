@@ -1,9 +1,10 @@
-import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import backgroundImage from '../../Images/AboutUs.jpg';
+import Footer from '../Footer/Footer';
 
 const AboutUs = () => {
   return (
+    <>
     <div className="bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <Navbar />
       <div className="pt-32 px-4 text-center text-white">
@@ -18,6 +19,8 @@ const AboutUs = () => {
         </p>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 

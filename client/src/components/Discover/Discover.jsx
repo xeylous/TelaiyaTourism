@@ -7,23 +7,23 @@ import RadhaKrishnaMandir from "../../Images/RadhaKrishnaMandir_img.jpg";
 import WildlifeSanctuary from "../../Images/WildlifeSanctuary.jpg";
 import PanchkheroDam from "../../Images/panchkheroDam.jpg";
 import PetroWaterfall from "../../Images/PetroWaterfalls.jpeg";
+import Footer from "../Footer/Footer";
 
 const Discover = () => {
   return (
-    <div>
-      <style>
-        {`
-          body {
-            background-image: url(${backgroundImage});
-            background-size: cover;
-            background-position: center;
-            height: 170vh;
-            margin: 0;
-          }
-        `}
-      </style>
+    <div
+      className="flex flex-col min-h-screen"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Navbar */}
       <Navbar />
-      <div className="p-10 py-20">
+
+      {/* Main content */}
+      <main className="flex-grow p-10 pt-20">
         <div className="flex flex-wrap justify-center gap-4">
           <div className="flex flex-wrap justify-center w-full">
             <Card
@@ -45,6 +45,7 @@ const Discover = () => {
               link="/discover/RadhaKrishnaMandir"
             />
           </div>
+
           <div className="flex flex-wrap justify-center w-full mt-4">
             <Card
               username="Petro Waterfall"
@@ -66,7 +67,10 @@ const Discover = () => {
             />
           </div>
         </div>
-      </div>
+      </main>
+
+      {/* Footer always at bottom */}
+      <Footer />
     </div>
   );
 };
