@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import backgroundImage from '../../Images/Home_img.jpg'; // Import the background image
 import Footer from '../Footer/Footer';
@@ -8,7 +8,7 @@ const Bookatrip = () => {
   const [name, setName] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [source, setSource] = useState('');
-  const [destination, setDestination] = useState('Telaiya');
+  const [destination] = useState('Telaiya');
   const [places, setPlaces] = useState({
     telaiyaDam: false,
     vrindahaWaterfall: false,
