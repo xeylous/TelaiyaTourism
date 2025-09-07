@@ -2,6 +2,7 @@ import backgroundImage from "../../Images/Home_img.jpg";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 
+
 const Home = () => {
   return (
     <div
@@ -17,7 +18,7 @@ const Home = () => {
 
       {/* Main content */}
       <main className="flex-grow relative">
-        <h1 className="telaiya-heading absolute top-1/3 left-10 font-montserrat text-5xl md:text-7xl text-white" style={{ fontFamily: "Delius" }}>
+        <h1 className="telaiya-heading absolute top-1/2 left-2 md:left-10  font-montserrat text-5xl md:text-7xl text-white" style={{ fontFamily: "Delius" }}>
           Telaiya Tourism
         </h1>
       </main>
