@@ -30,18 +30,18 @@ const REVIEWS = [
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-24 bg-zinc-50 dark:bg-black relative overflow-hidden transition-colors duration-300">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-neon-purple rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-float"></div>
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-neon-blue rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-blue-400/20 dark:bg-purple-600/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] opacity-20 animate-float"></div>
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-cyan-400/20 dark:bg-blue-600/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-neon-blue uppercase tracking-[0.2em] mb-2">Testimonials</h2>
-          <h3 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">What Travelers Say</h3>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <h2 className="text-sm font-bold text-blue-600 dark:text-cyan-400 uppercase tracking-[0.2em] mb-2">Testimonials</h2>
+          <h3 className="text-3xl md:text-5xl font-display font-bold text-zinc-900 dark:text-white mb-4">What Travelers Say</h3>
+          <p className="text-zinc-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             Real stories from real travelers who found their next adventure with us.
           </p>
         </div>
@@ -50,11 +50,11 @@ const Testimonials = () => {
           {REVIEWS.map((review, idx) => (
             <div 
               key={review.id}
-              className="glass p-8 rounded-2xl flex flex-col relative animate-fade-in-up hover:bg-white/5 transition-colors border border-white/10"
+              className="bg-white dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl flex flex-col relative animate-fade-in-up hover:shadow-xl dark:hover:bg-white/10 transition-all border border-zinc-200 dark:border-white/10"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               {/* Quote Icon */}
-              <div className="absolute top-6 right-8 text-white/10">
+              <div className="absolute top-6 right-8 text-zinc-200 dark:text-white/10">
                 <Quote size={48} className="fill-current transform rotate-180" />
               </div>
 
@@ -65,13 +65,13 @@ const Testimonials = () => {
                     key={i} 
                     size={16} 
                     fill={i < review.rating ? "currentColor" : "none"} 
-                    className={i < review.rating ? "" : "text-gray-300"}
+                    className={i < review.rating ? "" : "text-zinc-300 dark:text-gray-700"}
                   />
                 ))}
               </div>
 
               {/* Content */}
-              <p className="text-gray-300 italic mb-8 flex-grow leading-relaxed relative z-10">
+              <p className="text-zinc-600 dark:text-gray-300 italic mb-8 flex-grow leading-relaxed relative z-10">
                 "{review.content}"
               </p>
 
@@ -80,11 +80,11 @@ const Testimonials = () => {
                 <img 
                   src={review.avatar} 
                   alt={review.name} 
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-50"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-100 dark:ring-blue-900"
                 />
                 <div>
-                  <h4 className="font-bold text-white text-sm">{review.name}</h4>
-                  <p className="text-neon-blue text-xs font-semibold">{review.role}</p>
+                  <h4 className="font-bold text-zinc-900 dark:text-white text-sm">{review.name}</h4>
+                  <p className="text-blue-600 dark:text-cyan-400 text-xs font-semibold">{review.role}</p>
                 </div>
               </div>
             </div>

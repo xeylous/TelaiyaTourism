@@ -15,6 +15,7 @@ import MaaChanchalaDeviMandir from "./components/MaaChanchalaDeviMandir/MaaChanc
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const App = () => {
   useEffect(() => {
@@ -44,8 +45,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
-   
+    <ThemeProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -63,7 +63,7 @@ const App = () => {
         {/* <Route path="/discover/PanchkheroDam" element={<PanchkheroDam />} /> */}
       </Routes>
     </Router>
-    </>
+    </ThemeProvider>
   );
 };
 

@@ -5,20 +5,17 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-black relative pt-16 pb-8 overflow-hidden font-sans border-t border-white/5">
-       {/* Background Glow */}
-       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-neon-blue/10 rounded-full blur-[100px] pointer-events-none"></div>
-
+    <footer className="w-full bg-zinc-50 dark:bg-zinc-950 relative pt-16 pb-8 overflow-hidden font-sans border-t border-zinc-200 dark:border-zinc-900 text-zinc-600 dark:text-zinc-400 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-1">
              <Link to="/" className="flex items-center gap-2 mb-6 group">
-                <span className="text-2xl font-display font-bold tracking-tight text-white group-hover:text-neon-blue transition-colors text-glow">
-                  Telaiya<span className="text-neon-blue">Tourism</span>
+                <span className="text-2xl font-display font-medium tracking-tight text-zinc-900 dark:text-white transition-colors">
+                  Telaiya<span className="text-zinc-500 dark:text-zinc-500">Tourism</span>
                 </span>
              </Link>
-             <p className="text-gray-400 mb-6 leading-relaxed">
+             <p className="text-zinc-500 dark:text-zinc-500 mb-6 leading-relaxed font-light">
                Discover the hidden gems of Jharkhand. From serene dams to lush sanctuaries, your perfect adventure awaits.
              </p>
              <div className="flex gap-4">
@@ -31,9 +28,9 @@ export default function Footer() {
                   <a 
                     key={idx} 
                     href={href} 
-                    className="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:bg-neon-blue hover:text-black transition-all duration-300 shadow-lg hover:shadow-neon-blue/50"
+                    className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300"
                   >
-                    <Icon size={18} />
+                    <Icon size={16} />
                   </a>
                 ))}
              </div>
@@ -41,7 +38,7 @@ export default function Footer() {
 
            {/* Quick Links */}
            <div>
-              <h4 className="text-lg font-bold text-white mb-6 font-display">Quick Links</h4>
+              <h4 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-6">Quick Links</h4>
               <ul className="space-y-4">
                  {[
                    { label: "Home", path: "/" },
@@ -50,8 +47,7 @@ export default function Footer() {
                    { label: "Contact Us", path: "/contact" }
                  ].map((link, idx) => (
                    <li key={idx}>
-                     <Link to={link.path} className="text-gray-400 hover:text-neon-blue transition-colors flex items-center gap-2 group">
-                        <span className="w-1 h-1 bg-neon-blue rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                     <Link to={link.path} className="text-zinc-600 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors flex items-center gap-2 group">
                         {link.label}
                      </Link>
                    </li>
@@ -61,7 +57,7 @@ export default function Footer() {
 
            {/* Support */}
            <div>
-              <h4 className="text-lg font-bold text-white mb-6 font-display">Support</h4>
+              <h4 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-6">Support</h4>
               <ul className="space-y-4">
                  {[
                    { label: "FAQ", path: "#" },
@@ -70,7 +66,7 @@ export default function Footer() {
                    { label: "Booking Policy", path: "#" }
                  ].map((link, idx) => (
                    <li key={idx}>
-                     <Link to={link.path} className="text-gray-400 hover:text-neon-blue transition-colors">
+                     <Link to={link.path} className="text-zinc-600 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
                         {link.label}
                      </Link>
                    </li>
@@ -80,31 +76,31 @@ export default function Footer() {
 
            {/* Contact Info */}
            <div>
-              <h4 className="text-lg font-bold text-white mb-6 font-display">Contact Us</h4>
+              <h4 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-6">Contact Us</h4>
               <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-gray-400">
-                   <MapPin className="text-neon-blue mt-1 shrink-0" size={18} />
+                <li className="flex items-start gap-3 text-zinc-600 dark:text-zinc-500">
+                   <MapPin className="text-zinc-900 dark:text-white mt-1 shrink-0" size={16} />
                    <span>Koderma, Jharkhand, India - 825410</span>
                 </li>
-                <li className="flex items-center gap-3 text-gray-400">
-                   <Phone className="text-neon-blue shrink-0" size={18} />
+                <li className="flex items-center gap-3 text-zinc-600 dark:text-zinc-500">
+                   <Phone className="text-zinc-900 dark:text-white shrink-0" size={16} />
                    <span>+91 98765 43210</span>
                 </li>
-                <li className="flex items-center gap-3 text-gray-400">
-                   <Mail className="text-neon-blue shrink-0" size={18} />
+                <li className="flex items-center gap-3 text-zinc-600 dark:text-zinc-500">
+                   <Mail className="text-zinc-900 dark:text-white shrink-0" size={16} />
                    <span>info@telaiyatourism.com</span>
                 </li>
               </ul>
            </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500">
+        <div className="border-t border-zinc-200 dark:border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-zinc-500 dark:text-zinc-600">
             © {currentYear} Telaiya Tourism. All rights reserved.
           </p>
-          <p className="text-sm text-gray-500 flex items-center gap-1">
-            Built with <span className="animate-pulse text-neon-pink">♥️</span> by{" "}
-            <span className="font-semibold text-white hover:text-neon-blue transition-colors cursor-pointer">
+          <p className="text-sm text-zinc-500 dark:text-zinc-600 flex items-center gap-1">
+            Built with <span className="text-zinc-900 dark:text-white">♥️</span> by{" "}
+            <span className="font-semibold text-zinc-900 dark:text-white cursor-pointer">
               @xeylous
             </span>
           </p>
