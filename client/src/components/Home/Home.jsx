@@ -63,16 +63,16 @@ const Home = () => {
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white drop-shadow-lg mb-6 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white drop-shadow-lg mb-6 tracking-tight pb-2 animate-fade-in-up"
             style={{ fontFamily: "'Montserrat', sans-serif" }} // Fallback or imported font
           >
             Telaiya Tourism
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mb-10 font-light leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mb-10 font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             Uncover the hidden gems of Jharkhand. Adventure, serenity, and culture await.
           </p>
           
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col md:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <Link
               to="/book"
               className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-blue-500/30"
