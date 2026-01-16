@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import backgroundImage from "../../Images/Home_img.jpg";
 import { ArrowDown, MapPin, Camera, Heart, Shield } from "lucide-react";
 import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import Testimonials from "../Testimonials/Testimonials";
+import Newsletter from "../Newsletter/Newsletter";
 
 // Placeholder images - using imports or external if needed. 
 // Assuming some exist based on listing, mapping to best guesses or reusing.
@@ -170,6 +173,8 @@ const Home = () => {
         </div>
       </section>
 
+      <Testimonials />
+      <Newsletter />
       <Footer />
     </div>
   );
