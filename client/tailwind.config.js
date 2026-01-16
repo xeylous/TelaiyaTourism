@@ -6,6 +6,17 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+      },
+      colors: {
+        neon: {
+          blue: '#00f3ff',
+          purple: '#bc13fe',
+          pink: '#ff0099',
+        }
+      },
       animation: {
         'slow-zoom': 'slow-zoom 20s linear infinite',
         'fade-in-up': 'fade-in-up 1s ease-out forwards',

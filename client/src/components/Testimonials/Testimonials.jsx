@@ -30,18 +30,18 @@ const REVIEWS = [
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-gray-50 relative overflow-hidden">
+    <section className="py-24 bg-black relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-neon-purple rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-float"></div>
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-neon-blue rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2">Testimonials</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">What Travelers Say</h3>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <h2 className="text-sm font-bold text-neon-blue uppercase tracking-[0.2em] mb-2">Testimonials</h2>
+          <h3 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">What Travelers Say</h3>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Real stories from real travelers who found their next adventure with us.
           </p>
         </div>
@@ -50,11 +50,11 @@ const Testimonials = () => {
           {REVIEWS.map((review, idx) => (
             <div 
               key={review.id}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col relative animate-fade-in-up"
+              className="glass p-8 rounded-2xl flex flex-col relative animate-fade-in-up hover:bg-white/5 transition-colors border border-white/10"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               {/* Quote Icon */}
-              <div className="absolute top-6 right-8 text-blue-100">
+              <div className="absolute top-6 right-8 text-white/10">
                 <Quote size={48} className="fill-current transform rotate-180" />
               </div>
 
@@ -71,7 +71,7 @@ const Testimonials = () => {
               </div>
 
               {/* Content */}
-              <p className="text-gray-600 italic mb-8 flex-grow leading-relaxed relative z-10">
+              <p className="text-gray-300 italic mb-8 flex-grow leading-relaxed relative z-10">
                 "{review.content}"
               </p>
 
@@ -83,8 +83,8 @@ const Testimonials = () => {
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-50"
                 />
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm">{review.name}</h4>
-                  <p className="text-blue-500 text-xs font-semibold">{review.role}</p>
+                  <h4 className="font-bold text-white text-sm">{review.name}</h4>
+                  <p className="text-neon-blue text-xs font-semibold">{review.role}</p>
                 </div>
               </div>
             </div>

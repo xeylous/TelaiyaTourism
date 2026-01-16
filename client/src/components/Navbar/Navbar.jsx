@@ -21,28 +21,28 @@ const Navbar = () => {
   }, [location]);
 
   const navLinkClass = ({ isActive }) =>
-    `text-base font-medium transition-colors duration-200 hover:text-blue-600 ${
-      isActive ? "text-blue-600 font-bold" : "text-gray-700"
+    `text-sm font-medium transition-all duration-300 px-4 py-2 rounded-full hover:bg-white/10 ${
+      isActive ? "bg-white/20 text-blue-400 shadow-inner" : "text-gray-200 hover:text-white"
     }`;
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] transition-all duration-500 rounded-2xl ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-md py-2"
-          : "bg-transparent py-4"
+          ? "glass bg-black/40 py-2 border-white/10"
+          : "bg-transparent py-4 border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link
+           <Link
             to="/"
-            className="flex-shrink-0 flex items-center gap-2"
+            className="flex-shrink-0 flex items-center gap-2 group"
           >
              {/* You can add a logo image here if available */}
-            <span className={`text-2xl font-extrabold tracking-tight transition-colors duration-300 ${isScrolled ? 'text-blue-900' : 'text-blue-900'}`}>
-              Telaiya Tourism
+            <span className={`text-2xl font-display font-bold tracking-tight transition-colors duration-300 text-white group-hover:text-neon-blue drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]`}>
+              Telaiya<span className="text-neon-blue">Tourism</span>
             </span>
           </Link>
 
@@ -61,7 +61,7 @@ const Navbar = () => {
             {location.pathname !== "/book" && (
               <Link
                 to="/book"
-                className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                className="bg-blue-600/80 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-blue-600 hover:shadow-neon-blue/50 transition-all duration-300 transform hover:-translate-y-0.5 border border-white/10"
               >
                 Book a Trip
               </Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none transition-colors"
+              className="text-white hover:text-neon-blue focus:outline-none transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}

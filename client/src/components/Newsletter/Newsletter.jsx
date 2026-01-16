@@ -2,8 +2,8 @@ import { Send } from "lucide-react";
 
 const Newsletter = () => {
   return (
-    <section className="py-20 px-4 md:px-8 bg-white">
-      <div className="max-w-6xl mx-auto bg-gradient-to-r from-blue-900 to-blue-800 rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
+    <section className="py-20 px-4 md:px-8 bg-black">
+      <div className="max-w-6xl mx-auto bg-gradient-to-r from-blue-900/40 to-purple-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-[0_0_50px_rgba(0,243,255,0.15)]">
         {/* Decorative Circles */}
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/10 blur-2xl"></div>
         <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-80 h-80 rounded-full bg-blue-500/20 blur-3xl"></div>
