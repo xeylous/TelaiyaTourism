@@ -21,19 +21,31 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
-  const navLinkClass = ({ isActive }) =>
-    `text-sm font-medium transition-all duration-300 px-4 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 ${
-      isActive 
-        ? "bg-zinc-900 text-white dark:bg-white dark:text-black" 
-        : "text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white"
-    }`;
+  // Check if we're on a page with a hero image (where we need white text initially)
+  const hasHeroImage = ['/', '/discover', '/about', '/contact'].includes(location.pathname) || location.pathname.startsWith('/discover/');
+
+  const navLinkClass = ({ isActive }) => {
+    const baseClasses = "text-sm font-medium transition-all duration-300 px-4 py-2 rounded-full";
+    
+    if (isActive) {
+      return `${baseClasses} bg-zinc-900 text-white dark:bg-white dark:text-black`;
+    }
+    
+    // When not scrolled and on a hero page, use white text (visible on image backgrounds)
+    if (!isScrolled && hasHeroImage) {
+      return `${baseClasses} text-white/90 hover:text-white hover:bg-white/10`;
+    }
+    
+    // When scrolled or on non-hero pages, use theme-appropriate colors
+    return `${baseClasses} text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10`;
+  };
 
   return (
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] transition-all duration-500 rounded-2xl ${
         isScrolled
-          ? "glass bg-white/80 dark:bg-black/50 py-2 border-zinc-200 dark:border-zinc-800 shadow-sm backdrop-blur-md"
-          : "bg-transparent py-4 border-transparent"
+          ? "bg-white/90 dark:bg-zinc-900/90 py-2 border border-zinc-200 dark:border-zinc-800 shadow-lg backdrop-blur-xl"
+          : "bg-transparent py-4 border border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,9 +55,16 @@ const Navbar = () => {
             to="/"
             className="flex-shrink-0 flex items-center gap-2 group"
           >
-             {/* You can add a logo image here if available */}
-            <span className={`text-2xl font-display font-medium tracking-tight transition-colors duration-300 text-zinc-900 dark:text-white`}>
-              Telaiya<span className="text-zinc-500 dark:text-zinc-500">Tourism</span>
+            <span className={`text-2xl font-display font-medium tracking-tight transition-colors duration-300 ${
+              !isScrolled && hasHeroImage 
+                ? "text-white" 
+                : "text-zinc-900 dark:text-white"
+            }`}>
+              Telaiya<span className={`${
+                !isScrolled && hasHeroImage 
+                  ? "text-white/70" 
+                  : "text-zinc-500 dark:text-zinc-400"
+              }`}>Tourism</span>
             </span>
           </Link>
 
@@ -61,14 +80,22 @@ const Navbar = () => {
               Contact Us
             </NavLink>
             
-            <div className="ml-2 pl-2 border-l border-zinc-200 dark:border-zinc-800">
-               <ThemeToggle />
+            <div className={`ml-2 pl-2 border-l ${
+              !isScrolled && hasHeroImage 
+                ? "border-white/30" 
+                : "border-zinc-200 dark:border-zinc-700"
+            }`}>
+               <ThemeToggle isHeroMode={!isScrolled && hasHeroImage} />
             </div>
 
             {location.pathname !== "/book" && (
               <Link
                 to="/book"
-                className="bg-zinc-900 text-white dark:bg-white dark:text-black px-6 py-2 rounded-full font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-300 transform hover:-translate-y-0.5 ml-4"
+                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:-translate-y-0.5 ml-4 ${
+                  !isScrolled && hasHeroImage
+                    ? "bg-white text-zinc-900 hover:bg-white/90"
+                    : "bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200"
+                }`}
               >
                 Book a Trip
               </Link>
@@ -77,10 +104,14 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-            <ThemeToggle />
+            <ThemeToggle isHeroMode={!isScrolled && hasHeroImage} />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-300 focus:outline-none transition-colors"
+              className={`focus:outline-none transition-colors ${
+                !isScrolled && hasHeroImage
+                  ? "text-white hover:text-white/80"
+                  : "text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-300"
+              }`}
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -91,18 +122,18 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800 shadow-2xl rounded-2xl mt-2 transform transition-all duration-300 ease-in-out origin-top ${
+        className={`md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800 shadow-2xl rounded-2xl mt-2 transform transition-all duration-300 ease-in-out origin-top ${
             isOpen ? "opacity-100 scale-y-100 translate-y-0" : "opacity-0 scale-y-0 -translate-y-2 pointer-events-none"
         }`}
       >
         <div className="px-4 pt-2 pb-6 space-y-2">
-            <NavLink to="/discover" className={({ isActive }) => `block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${isActive ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900'}`}>
+            <NavLink to="/discover" className={({ isActive }) => `block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${isActive ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800'}`}>
               Discover
             </NavLink>
-            <NavLink to="/about" className={({ isActive }) => `block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${isActive ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900'}`}>
+            <NavLink to="/about" className={({ isActive }) => `block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${isActive ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800'}`}>
               About Us
             </NavLink>
-            <NavLink to="/contact" className={({ isActive }) => `block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${isActive ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900'}`}>
+            <NavLink to="/contact" className={({ isActive }) => `block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${isActive ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800'}`}>
               Contact Us
             </NavLink>
             {location.pathname !== "/book" && (

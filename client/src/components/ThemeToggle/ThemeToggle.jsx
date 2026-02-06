@@ -1,7 +1,7 @@
 import { Moon, Sun, Monitor } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ isHeroMode = false }) => {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -10,12 +10,19 @@ const ThemeToggle = () => {
     else setTheme('light');
   };
 
+  const getIconColor = () => {
+    if (isHeroMode) {
+      return 'text-white hover:bg-white/10';
+    }
+    if (theme === 'light') return 'text-amber-500 hover:bg-zinc-100';
+    if (theme === 'dark') return 'text-blue-400 hover:bg-zinc-800';
+    return 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800';
+  };
+
   return (
     <button
       onClick={toggleTheme}
-      className={`relative p-2 rounded-full transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
-        theme === 'light' ? 'text-amber-500' : theme === 'dark' ? 'text-blue-400' : 'text-zinc-500 dark:text-zinc-400'
-      }`}
+      className={`relative p-2 rounded-full transition-all duration-300 ${getIconColor()}`}
       aria-label="Toggle theme"
     >
       {theme === 'light' && <Sun size={20} />}

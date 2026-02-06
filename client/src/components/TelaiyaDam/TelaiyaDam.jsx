@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+import { MapPin, Clock, Calendar, ArrowLeft, Navigation, Camera, Info } from 'lucide-react';
 import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 import TelaiyaDamImage from '../../Images/telaiyabg.jpg';
 import TelaiyaDamImage1 from '../../Images/Tilaiya_dam1.jpg';
 import TelaiyaDamImage2 from '../../Images/Tilaiya_dam2.jpg';
@@ -6,89 +9,185 @@ import TelaiyaDamImage3 from '../../Images/Tilaiya_dam3.jpeg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import 'swiper/css/pagination';
+import { Navigation as SwiperNavigation, Pagination } from 'swiper/modules';
 
 const TelaiyaDam = () => {
+  const images = [TelaiyaDamImage1, TelaiyaDamImage2, TelaiyaDamImage3];
+
+  const highlights = [
+    { icon: <Clock className="w-5 h-5" />, label: "Best Time", value: "Oct - March" },
+    { icon: <Calendar className="w-5 h-5" />, label: "Duration", value: "2-3 Hours" },
+    { icon: <MapPin className="w-5 h-5" />, label: "Location", value: "Koderma, Jharkhand" },
+  ];
+
   return (
-    <div className="relative">
+    <div className="flex flex-col min-h-screen font-sans text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
+      {/* Noise texture overlay */}
+      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 dark:opacity-20 pointer-events-none z-0"></div>
+      
       <Navbar />
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 h-auto min-h-screen p-5 md:p-10 bg-cover bg-center pt-28 md:pt-40"
-        style={{
-          backgroundImage: `url(${TelaiyaDamImage})`,
-        }}
-      >
-        {/* Swiper Section (on small screens first, on large screens second) */}
-        <div className="order-1 md:order-2 flex flex-col justify-center items-center mt-0 md:mt-0 bg-gray-800 bg-opacity-60 p-4 md:p-6 rounded-lg shadow-lg w-full">
-          <Swiper
-            spaceBetween={10}
-            slidesPerView={1}
-            navigation={true}
-            modules={[Navigation]}
-            className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg"
+
+      {/* Hero Section */}
+      <header className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${TelaiyaDamImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-zinc-50 dark:to-zinc-950"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          {/* Back Button */}
+          <Link 
+            to="/discover" 
+            className="absolute top-24 left-6 md:left-10 flex items-center gap-2 text-white/80 hover:text-white transition-colors group"
           >
-            <SwiperSlide>
-              <img
-                src={TelaiyaDamImage1}
-                alt="Telaiya Dam 1"
-                className="rounded-lg w-full h-full object-cover"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src={TelaiyaDamImage2}
-                alt="Telaiya Dam 2"
-                className="rounded-lg w-full h-full object-cover"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src={TelaiyaDamImage3}
-                alt="Telaiya Dam 3"
-                className="rounded-lg w-full h-full object-cover"
-              />
-            </SwiperSlide>
-          </Swiper>
-        </div>
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm font-medium">Back to Discover</span>
+          </Link>
 
-        {/* Description + Map Section */}
-        <div className="order-2 md:order-1 flex flex-col justify-center text-left text-white bg-black bg-opacity-50 p-6 rounded-lg md:mr-5">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6">Telaiya Dam</h1>
-          <p className="text-base md:text-lg mb-6">
-            Telaiya Dam is one of the most picturesque spots in the region. Known
-            for its scenic beauty and serene environment, it is a perfect getaway
-            for nature lovers and those seeking a peaceful retreat. The dam is not
-            only an important source of water but also a hub for various recreational
-            activities.
-          </p>
-
-          {/* Google Map inside description */}
-          <div className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rounded-lg overflow-hidden shadow-lg mb-4">
-            <iframe
-              title="Telaiya Dam Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.5323124143047!2d85.52970817466471!3d24.46362296082801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2fdcd6ec4d3e3%3A0x1cbcc8a8a3487f6f!2sTelaiya%20Dam!5e0!3m2!1sen!2sin!4v1694514923456!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 text-white text-sm font-medium mb-6">
+            <Camera className="w-4 h-4" />
+            <span>Dam & Reservoir</span>
           </div>
-
-          {/* Directions Button */}
-          <div className="flex justify-center md:justify-start">
-            <a
-              href="https://www.google.com/maps/dir/?api=1&destination=Telaiya+Dam"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition"
-            >
-              Get Directions
-            </a>
+          
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white drop-shadow-lg mb-6 tracking-tighter">
+            Telaiya Dam
+          </h1>
+          
+          <div className="flex items-center gap-2 text-white/90">
+            <MapPin className="w-5 h-5" />
+            <span>Koderma District, Jharkhand</span>
           </div>
         </div>
-      </div>
+      </header>
+
+      {/* Quick Info Bar */}
+      <section className="relative z-10 -mt-12 mx-4 md:mx-auto md:max-w-4xl">
+        <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl dark:shadow-none border border-zinc-200 dark:border-zinc-800 p-6 grid grid-cols-3 gap-4">
+          {highlights.map((item, idx) => (
+            <div key={idx} className="flex flex-col items-center text-center">
+              <div className="p-3 bg-blue-50 dark:bg-blue-500/10 rounded-xl text-blue-600 dark:text-cyan-400 mb-2">
+                {item.icon}
+              </div>
+              <span className="text-xs text-zinc-500 dark:text-zinc-400">{item.label}</span>
+              <span className="text-sm font-semibold text-zinc-900 dark:text-white">{item.value}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16 px-4 md:px-8 bg-zinc-50 dark:bg-zinc-950 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            {/* Image Gallery */}
+            <div className="order-1 lg:order-2">
+              <div className="sticky top-24">
+                <Swiper
+                  spaceBetween={10}
+                  slidesPerView={1}
+                  navigation={true}
+                  pagination={{ clickable: true }}
+                  modules={[SwiperNavigation, Pagination]}
+                  className="w-full h-[350px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl"
+                >
+                  {images.map((img, idx) => (
+                    <SwiperSlide key={idx}>
+                      <img
+                        src={img}
+                        alt={`Telaiya Dam ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+
+            {/* Description & Map */}
+            <div className="order-2 lg:order-1 space-y-8">
+              {/* About Section */}
+              <div className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-800 shadow-lg dark:shadow-none">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-blue-50 dark:bg-blue-500/10 rounded-xl">
+                    <Info className="w-6 h-6 text-blue-600 dark:text-cyan-400" />
+                  </div>
+                  <h2 className="text-2xl font-display font-bold text-zinc-900 dark:text-white">About Telaiya Dam</h2>
+                </div>
+                
+                <div className="prose dark:prose-invert max-w-none">
+                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                    Telaiya Dam is one of the most picturesque spots in the region and holds historical significance as the <strong className="text-zinc-900 dark:text-white">first dam built under the Damodar Valley Corporation (DVC) project</strong> after India's independence in 1953.
+                  </p>
+                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                    Known for its scenic beauty and serene environment, it is a perfect getaway for nature lovers and those seeking a peaceful retreat. The dam is situated on the Barakar River and is surrounded by lush green hills.
+                  </p>
+                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    The reservoir area offers stunning sunrise and sunset views, making it a paradise for photographers and nature enthusiasts. The calm waters reflect the surrounding landscape, creating breathtaking vistas.
+                  </p>
+                </div>
+              </div>
+
+              {/* Location & Map */}
+              <div className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-800 shadow-lg dark:shadow-none">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-blue-50 dark:bg-blue-500/10 rounded-xl">
+                    <MapPin className="w-6 h-6 text-blue-600 dark:text-cyan-400" />
+                  </div>
+                  <h2 className="text-2xl font-display font-bold text-zinc-900 dark:text-white">Location</h2>
+                </div>
+                
+                <div className="w-full h-[300px] rounded-xl overflow-hidden mb-6 border border-zinc-200 dark:border-zinc-700">
+                  <iframe
+                    title="Telaiya Dam Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.5323124143047!2d85.52970817466471!3d24.46362296082801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2fdcd6ec4d3e3%3A0x1cbcc8a8a3487f6f!2sTelaiya%20Dam!5e0!3m2!1sen!2sin!4v1694514923456!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="grayscale dark:grayscale-0 dark:opacity-90"
+                  ></iframe>
+                </div>
+
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Telaiya+Dam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 w-full justify-center px-6 py-4 bg-blue-600 dark:bg-cyan-500 text-white dark:text-black font-bold rounded-xl hover:bg-blue-700 dark:hover:bg-cyan-400 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <Navigation className="w-5 h-5" />
+                  Get Directions
+                </a>
+              </div>
+
+              {/* Book Trip CTA */}
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-cyan-600 dark:to-blue-600 rounded-2xl p-8 text-white">
+                <h3 className="text-2xl font-display font-bold mb-3">Ready to Visit?</h3>
+                <p className="text-white/80 mb-6">Book your trip to Telaiya Dam and experience the serene beauty of Jharkhand.</p>
+                <Link
+                  to="/book"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 dark:text-cyan-600 font-bold rounded-xl hover:bg-zinc-100 transition-all"
+                >
+                  Book Your Trip
+                  <ArrowLeft className="w-4 h-4 rotate-180" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };

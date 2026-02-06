@@ -51,18 +51,16 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/discover" element={<Discover />} />
           <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/book" element={<Bookatrip />} />
-        <Route path="/discover/TelaiyaDam" element={<TelaiyaDam />} />
-        <Route path="/discover/VrindahaWaterfall" element={<VrindahaWaterfall />} />
-        <Route path="/discover/RadhaKrishnaMandir" element={<RadhaKrishnaMandir />} />
-        <Route path="/discover/PetroWaterfall" element={<PetroWaterfall />} />
-        <Route path="/discover/MaaChanchalaDeviMandir" element={<MaaChanchalaDeviMandir />} />
-        <Route path="/discover/KodermaWildlifeSanctuary" element={<KodermaWildlifeSanctuary />} />
-        <Route path="/discover/KodermaWildlifeSanctuary" element={<KodermaWildlifeSanctuary />} />
-        {/* <Route path="/discover/PanchkheroDam" element={<PanchkheroDam />} /> */}
-      </Routes>
-    </Router>
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/book" element={<Bookatrip />} />
+          <Route path="/discover/TelaiyaDam" element={<TelaiyaDam />} />
+          <Route path="/discover/VrindahaWaterfall" element={<VrindahaWaterfall />} />
+          <Route path="/discover/RadhaKrishnaMandir" element={<RadhaKrishnaMandir />} />
+          <Route path="/discover/PetroWaterfall" element={<PetroWaterfall />} />
+          <Route path="/discover/MaaChanchalaDeviMandir" element={<MaaChanchalaDeviMandir />} />
+          <Route path="/discover/KodermaWildlifeSanctuary" element={<KodermaWildlifeSanctuary />} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 };
